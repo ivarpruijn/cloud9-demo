@@ -1,5 +1,9 @@
-/* global describe it */
+/* global describe it beforeEach */
 var assert = require("assert");
+
+beforeEach(function() {
+    console.log('Running the test');
+});
 
 describe('Array', function(){
     describe('#indexOf()', function(){
@@ -8,4 +12,4 @@ describe('Array', function(){
             assert.equal(-1, [1,2,3].indexOf(0));
         });
     });
-}); 
+});

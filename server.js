@@ -1,7 +1,6 @@
 var http = require('http');
 var fs = require('fs');
 var index = fs.readFileSync("index.html");
-var optimist = require("optimist");
 
 http.createServer(function (req, res) {
     var userAgent = req.headers["user-agent"];
@@ -12,7 +11,7 @@ http.createServer(function (req, res) {
 }).listen(9615);
 
 function main(argv, config, callback) {
-    var options = optimist(argv)
+    var options = main(argv)
         .usage("Usage: $0 [CONFIG_NAME] [--help]")
         .alias("s", "settings")
         .default("settings")

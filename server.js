@@ -1,12 +1,24 @@
-var http = require('http');
-var fs = require('fs');
+var http = require("http");
+var fs = require("fs");
 var index = fs.readFileSync("index.html");
 
 http.createServer(function (req, res) {
     var userAgent = req.headers["user-agent"];
     if (userAgent) {
-        res.writeHead(200, {'Content-Type': 'text/plain'});
+        res.writeHead(200, {"Content-Type": "text/plain"});
         res.end(index);
+    }
+    for (var i = 0; i < userAgent.length; i++) {
+        var userAgentChar = userAgent.charAt(i);
+        writeToLog("User-Agent at position " + i + " is '" 
+            + userAgentChar + "'\n");
+    }
+    
+    function writeToLog(message) {
+        fs.appendFile("output.log", message, function (err) {
+            if (err)
+                console.error("Error writing to log file");
+        });
     }
 }).listen(9615);
 

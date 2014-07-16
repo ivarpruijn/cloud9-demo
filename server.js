@@ -1,6 +1,7 @@
 var http = require("http");
 var fs = require("fs");
 var index = fs.readFileSync("index.html");
+var port = 9615;
 
 http.createServer(function (req, res) {
     var userAgent = req.headers["user-agent"];
@@ -20,7 +21,9 @@ http.createServer(function (req, res) {
                 console.error("Error writing to log file");
         });
     }
-}).listen(9615);
+}).listen(port);
+
+console.log("Server running on port " + port);
 
 function main(argv, config, callback) {
     var options = main(argv)

@@ -2,7 +2,7 @@
 var assert = require("assert");
 
 beforeEach(function() {
-    console.log('Running the test');
+    console.log('Running the test properly');
 });
 
 describe('Array', function(){
